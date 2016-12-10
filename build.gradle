@@ -6,8 +6,6 @@ buildscript {
     }
     dependencies {
         classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.6'
-
-        classpath 'cn.bestwu.gradle:publish-plugin:1.0'
     }
 }
 
