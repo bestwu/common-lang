@@ -1,0 +1,38 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url 'http://repo.spring.io/plugins-release/' }
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+    dependencies {
+        classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.6'
+
+        classpath 'cn.bestwu.gradle:publish-plugin:1.0'
+    }
+}
+
+group 'cn.bestwu'
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'propdeps'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+[compileJava, javadoc, compileTestJava]*.options*.encoding = 'UTF-8'
+[compileJava, compileTestJava]*.options*.compilerArgs = ['-Xlint:none', '-Xlint:unchecked']
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.21'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.8.5'
+
+    optional 'org.apache.lucene:lucene-analyzers-common:6.3.0'
+    optional 'org.springframework.boot:spring-boot-starter-web:1.4.2.RELEASE'
+
+    testCompile 'junit:junit:4.12'
+}
