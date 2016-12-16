@@ -20,7 +20,9 @@ public class AESUtil {
 	 */
 	public static String encrypt(String content, String encryptKey) throws Exception {
 		KeyGenerator kgen = KeyGenerator.getInstance("AES");
-		kgen.init(128, new SecureRandom(encryptKey.getBytes()));
+		SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
+		random.setSeed(encryptKey.getBytes());
+		kgen.init(128, random);
 
 		Cipher cipher = Cipher.getInstance("AES");
 		cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(kgen.generateKey().getEncoded(), "AES"));
@@ -38,7 +40,9 @@ public class AESUtil {
 	 */
 	public static String decrypt(String encryptedStr, String decryptKey) throws Exception {
 		KeyGenerator kgen = KeyGenerator.getInstance("AES");
-		kgen.init(128, new SecureRandom(decryptKey.getBytes()));
+		SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
+		random.setSeed(decryptKey.getBytes());
+		kgen.init(128, random);
 
 		Cipher cipher = Cipher.getInstance("AES");
 		cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(kgen.generateKey().getEncoded(), "AES"));
