@@ -2,6 +2,7 @@ package cn.bestwu.lang.util;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.core.env.Environment;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -15,6 +16,25 @@ import javax.servlet.http.HttpServletRequest;
 public class AutowireHelper implements ApplicationContextAware {
 
 	private static ApplicationContext applicationContext;
+
+	private static Environment environment;
+
+	/**
+	 * getProperty
+	 *
+	 * @param key key
+	 * @return Property
+	 */
+	public static String getProperty(String key) {
+		return environment.getProperty(key);
+	}
+
+	/**
+	 * @return Environment
+	 */
+	public static Environment getEnvironment() {
+		return environment;
+	}
 
 	/**
 	 * @param clazz clazz
@@ -39,6 +59,7 @@ public class AutowireHelper implements ApplicationContextAware {
 	@Override
 	public void setApplicationContext(final ApplicationContext applicationContext) {
 		AutowireHelper.applicationContext = applicationContext;
+		environment = applicationContext.getEnvironment();
 	}
 
 }
