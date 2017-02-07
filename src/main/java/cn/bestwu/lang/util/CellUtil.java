@@ -97,10 +97,10 @@ public class CellUtil {
 	}
 
 	/**
-	 * 是否为中国大陆手机号
+	 * 是否为中国内地手机号
 	 *
 	 * @param cell 手机号码
-	 * @return 是否为中国大陆手机号
+	 * @return 是否为中国内地手机号
 	 */
 	public static boolean isChinaCell(String cell) {
 		if (cell == null) {
