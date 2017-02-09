@@ -9,10 +9,10 @@ import java.util.Arrays;
  */
 public class DefaultReplaceStrategy implements ReplaceStrategy {
 
-	@Override
-	public char[] replaceWith(char[] words) {
-		Arrays.fill(words, '*');
-		return words;
-	}
+  @Override
+  public char[] replaceWith(char[] words) {
+    Arrays.fill(words, '*');
+    return words;
+  }
 
 }

@@ -12,121 +12,122 @@ import java.util.Set;
  * @author Peter Wu
  */
 public class CharNode implements Serializable {
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = 1L;
-	/**
-	 * 父节点
-	 */
-	private CharNode parent;
-	/**
-	 * 子节点
-	 */
-	private Map<Character, CharNode> children = new HashMap<>(
-			0);
 
-	/**
-	 * 匹配失败时，指向较短的匹配，如：‘我是谁’，匹配失败时，指向，‘我是’节点
-	 */
-	private CharNode failNode;
+  /**
+   *
+   */
+  private static final long serialVersionUID = 1L;
+  /**
+   * 父节点
+   */
+  private CharNode parent;
+  /**
+   * 子节点
+   */
+  private Map<Character, CharNode> children = new HashMap<>(
+      0);
 
-	/**
-	 * 字符所在层级，即匹配的字符串的长度;
-	 */
-	private int length;
+  /**
+   * 匹配失败时，指向较短的匹配，如：‘我是谁’，匹配失败时，指向，‘我是’节点
+   */
+  private CharNode failNode;
 
-	public CharNode() {
-		super();
-	}
+  /**
+   * 字符所在层级，即匹配的字符串的长度;
+   */
+  private int length;
 
-	public CharNode(CharNode parent, int length) {
-		super();
-		this.parent = parent;
-		this.length = length;
-	}
+  public CharNode() {
+    super();
+  }
 
-	public CharNode getParent() {
-		return parent;
-	}
+  public CharNode(CharNode parent, int length) {
+    super();
+    this.parent = parent;
+    this.length = length;
+  }
 
-	public void setParent(CharNode parent) {
-		this.parent = parent;
-	}
+  public CharNode getParent() {
+    return parent;
+  }
 
-	public Map<Character, CharNode> getChildren() {
-		return children;
-	}
+  public void setParent(CharNode parent) {
+    this.parent = parent;
+  }
 
-	public void setChildren(Map<Character, CharNode> children) {
-		this.children = children;
-	}
+  public Map<Character, CharNode> getChildren() {
+    return children;
+  }
 
-	public CharNode getFailNode() {
-		return failNode;
-	}
+  public void setChildren(Map<Character, CharNode> children) {
+    this.children = children;
+  }
 
-	public void setFailNode(CharNode failNode) {
-		this.failNode = failNode;
-	}
+  public CharNode getFailNode() {
+    return failNode;
+  }
 
-	public int getLength() {
-		return length;
-	}
+  public void setFailNode(CharNode failNode) {
+    this.failNode = failNode;
+  }
 
-	public void setLength(int length) {
-		this.length = length;
-	}
+  public int getLength() {
+    return length;
+  }
 
-	// function
-	public CharNode addChild(Character character) {
-		CharNode charNode = children.get(character);
-		if (charNode == null) {
-			int length = this.length + 1;
-			charNode = new CharNode(this, length);
-			children.put(character, charNode);
-		}
+  public void setLength(int length) {
+    this.length = length;
+  }
 
-		return charNode;
-	}
+  // function
+  public CharNode addChild(Character character) {
+    CharNode charNode = children.get(character);
+    if (charNode == null) {
+      int length = this.length + 1;
+      charNode = new CharNode(this, length);
+      children.put(character, charNode);
+    }
 
-	// public CharNode addChild(Character character) {
-	// CharNode charNode = children.get(character);
-	// if (charNode == null) {
-	// int length = this.length + 1;
-	// charNode = new CharNode(this, length);
-	// children.put(character, charNode);
-	// }
-	//
-	// return charNode;
-	// }
+    return charNode;
+  }
 
-	public Set<Character> keys() {
-		return children.keySet();
-	}
+  // public CharNode addChild(Character character) {
+  // CharNode charNode = children.get(character);
+  // if (charNode == null) {
+  // int length = this.length + 1;
+  // charNode = new CharNode(this, length);
+  // children.put(character, charNode);
+  // }
+  //
+  // return charNode;
+  // }
 
-	public Collection<CharNode> childNodes() {
-		return children.values();
-	}
+  public Set<Character> keys() {
+    return children.keySet();
+  }
 
-	public CharNode get(char c) {
-		return children.get(c);
-	}
+  public Collection<CharNode> childNodes() {
+    return children.values();
+  }
 
-	public boolean isEnd() {
-		CharNode charNode = children.get(null);
-		return charNode != null;
-	}
+  public CharNode get(char c) {
+    return children.get(c);
+  }
 
-	// public char[] getWords() {
-	// StringBuilder words = new StringBuilder();
-	// words.append(ch);
-	// CharNode parent = this.parent;
-	// while (parent != null && parent != root) {
-	// words.append(parent.getCh());
-	// parent = parent.getParent();
-	// }
-	// words = words.reverse();
-	// return words.toString().toCharArray();
-	// }
+  public boolean isEnd() {
+    CharNode charNode = children.get(null);
+    return charNode != null;
+  }
+
+  // public char[] getWords() {
+  // StringBuilder words = new StringBuilder();
+  // words.append(ch);
+  // CharNode parent = this.parent;
+  // while (parent != null && parent != root) {
+  // words.append(parent.getCh());
+  // parent = parent.getParent();
+  // }
+  // words = words.reverse();
+  // return words.toString().toCharArray();
+  // }
 }
