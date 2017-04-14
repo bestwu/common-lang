@@ -6,7 +6,7 @@ plugins {
 }
 
 group 'cn.bestwu'
-version '1.0.4'
+version '1.0.5'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
