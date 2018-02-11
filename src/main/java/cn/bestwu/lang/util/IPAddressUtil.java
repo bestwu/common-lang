@@ -39,7 +39,7 @@ public class IPAddressUtil {
 			ip = request.getRemoteAddr();
 		}
 		if (ip == null) {
-			ip = "192.168.123.321";
+			ip = "unknown";
 		}
 		return ip;
 	}
