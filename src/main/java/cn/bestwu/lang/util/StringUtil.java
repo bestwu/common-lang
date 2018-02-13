@@ -34,8 +34,7 @@ public class StringUtil {
   static {
     objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
     objectMapper.enable(SerializationFeature.WRITE_ENUMS_USING_INDEX);
-    objectMapper.disable(SerializationFeature.WRITE_NULL_MAP_VALUES,
-        SerializationFeature.FAIL_ON_EMPTY_BEANS);
+    objectMapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
     objectMapper.disable(MapperFeature.DEFAULT_VIEW_INCLUSION);
   }
 

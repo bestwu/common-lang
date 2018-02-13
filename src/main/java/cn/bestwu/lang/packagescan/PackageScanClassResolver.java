@@ -295,7 +295,6 @@ public class PackageScanClassResolver {
 
   /**
    * Strategy to get the resources by the given classloader.
-   * <p/>
    * to take care of WebSphere's odditiy of resource loading.
    *
    * @param loader the classloader
@@ -406,6 +405,8 @@ public class PackageScanClassResolver {
    * @param parentFileName a unique name for the parentFileStream, to be used for caching.
    * This is the URL of the parentFileStream, if it comes from a URL,
    * or a composite ID if we are currently examining a nested JAR.
+   * @param grandparentFileName grandparentFileName
+   * @throws IOException IOException
    */
   protected void loadImplementationsInJar(String parentPackage, InputStream parentFileStream,
       ClassLoader loader, String parentFileName, String grandparentFileName) throws IOException {
