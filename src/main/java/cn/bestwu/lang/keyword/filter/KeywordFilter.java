@@ -1,4 +1,4 @@
-package cn.bestwu.lang.util.keyword.filter;
+package cn.bestwu.lang.keyword.filter;
 
 import java.util.Collection;
 

@@ -1,4 +1,4 @@
-package cn.bestwu.lang.util.keyword;
+package cn.bestwu.lang.keyword;
 
 /**
  * 匹配方式

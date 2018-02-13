@@ -1,9 +1,9 @@
-package cn.bestwu.lang.util.keyword.filter;
+package cn.bestwu.lang.keyword.filter;
 
-import cn.bestwu.lang.util.keyword.CharNode;
-import cn.bestwu.lang.util.keyword.MatchType;
-import cn.bestwu.lang.util.keyword.replace.DefaultReplaceStrategy;
-import cn.bestwu.lang.util.keyword.replace.ReplaceStrategy;
+import cn.bestwu.lang.keyword.CharNode;
+import cn.bestwu.lang.keyword.MatchType;
+import cn.bestwu.lang.keyword.replace.DefaultReplaceStrategy;
+import cn.bestwu.lang.keyword.replace.ReplaceStrategy;
 import java.util.Arrays;
 import java.util.Collection;
 

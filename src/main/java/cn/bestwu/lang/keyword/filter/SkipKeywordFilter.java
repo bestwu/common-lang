@@ -1,7 +1,7 @@
-package cn.bestwu.lang.util.keyword.filter;
+package cn.bestwu.lang.keyword.filter;
 
-import cn.bestwu.lang.util.keyword.CharNode;
-import cn.bestwu.lang.util.keyword.MatchType;
+import cn.bestwu.lang.keyword.CharNode;
+import cn.bestwu.lang.keyword.MatchType;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;

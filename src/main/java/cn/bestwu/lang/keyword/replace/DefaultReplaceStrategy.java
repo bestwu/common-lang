@@ -1,4 +1,4 @@
-package cn.bestwu.lang.util.keyword.replace;
+package cn.bestwu.lang.keyword.replace;
 
 import java.util.Arrays;
 

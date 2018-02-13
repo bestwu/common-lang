@@ -3,4 +3,4 @@
  *
  * @author Peter Wu
  */
-package cn.bestwu.lang.util.keyword;
+package cn.bestwu.lang.keyword;

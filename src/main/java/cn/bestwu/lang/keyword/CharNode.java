@@ -1,4 +1,4 @@
-package cn.bestwu.lang.util.keyword;
+package cn.bestwu.lang.keyword;
 
 import java.io.Serializable;
 import java.util.Collection;
