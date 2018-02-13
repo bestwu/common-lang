@@ -240,16 +240,16 @@ public class ImageBuilder {
     if (StringUtil.hasText(formatName) && !this.formatName.equalsIgnoreCase(formatName)) {
       /*
        * Note: The following code is a workaround for the JPEG writer
-			 * which ships with the JDK.
-			 * 
-			 * At issue is, that the JPEG writer appears to write the alpha
-			 * channel when it should not. To circumvent this, images which are
-			 * to be saved as a JPEG will be copied to another BufferedImage
-			 * without an alpha channel before it is saved.
-			 * 
-			 * Also, the BMP writer appears not to support ARGB, so an RGB image
-			 * will be produced before saving.
-			 */
+       * which ships with the JDK.
+       *
+       * At issue is, that the JPEG writer appears to write the alpha
+       * channel when it should not. To circumvent this, images which are
+       * to be saved as a JPEG will be copied to another BufferedImage
+       * without an alpha channel before it is saved.
+       *
+       * Also, the BMP writer appears not to support ARGB, so an RGB image
+       * will be produced before saving.
+       */
       if (formatName.equalsIgnoreCase("jpg") || formatName.equalsIgnoreCase("jpeg") || formatName
           .equalsIgnoreCase("bmp")) {
         bufferedImage = copy(bufferedImage, BufferedImage.TYPE_INT_RGB);
