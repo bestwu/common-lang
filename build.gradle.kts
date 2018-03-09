@@ -1,7 +1,7 @@
 plugins {
     java
     idea
-    id("cn.bestwu.publish") version "0.0.17"
+    id("cn.bestwu.publish") version "0.0.18"
 }
 
 group = "cn.bestwu"
