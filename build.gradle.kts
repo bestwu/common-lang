@@ -5,13 +5,7 @@ plugins {
 }
 
 group = "cn.bestwu"
-version = "1.0.8"
-
-tasks.withType(JavaCompile::class.java) {
-    sourceCompatibility = "1.7"
-    targetCompatibility = "1.7"
-    options.encoding = "UTF-8"
-}
+version = "1.1.0-SNAPSHOT"
 
 repositories {
     jcenter()
@@ -19,9 +13,9 @@ repositories {
 
 dependencies {
     compile("org.slf4j:slf4j-api:1.7.25")
-    compile("com.fasterxml.jackson.core:jackson-databind:2.9.3")
+    compile("com.fasterxml.jackson.core:jackson-databind:2.9.4")
     compileOnly("org.apache.lucene:lucene-analyzers-common:7.2.1")
-    compileOnly("org.springframework.boot:spring-boot-starter-web:1.5.9.RELEASE")
+    compileOnly("org.springframework.boot:spring-boot-starter-web:2.0.0.RELEASE")
     testCompile("junit:junit:4.12")
 }
 
