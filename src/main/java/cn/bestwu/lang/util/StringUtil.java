@@ -7,10 +7,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
 import java.util.Locale;
 import java.util.zip.DeflaterOutputStream;
@@ -27,10 +25,12 @@ public class StringUtil {
 
   private static Logger log = LoggerFactory.getLogger(StringUtil.class);
 
-  private static ObjectMapper objectMapper = new ObjectMapper();
+  public static ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+  public static ObjectMapper INDENT_OUTPUT_OBJECT_MAPPER = new ObjectMapper();
 
   static {
-    objectMapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
+    OBJECT_MAPPER.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
+    INDENT_OUTPUT_OBJECT_MAPPER.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
   }
 
   /**
@@ -94,57 +94,16 @@ public class StringUtil {
    * @return 字符串
    */
   public static String valueOf(Object object, boolean format) {
-    if (object == null) {
-      return "null";
-    }
-    Class<?> clazz = object.getClass();
-    if (clazz.isArray()) {
-      int length = Array.getLength(object);
-      int iMax = length - 1;
-      if (iMax == -1) {
-        return "[]";
+    try {
+      String string;
+      if (format) {
+        string = INDENT_OUTPUT_OBJECT_MAPPER.writeValueAsString(object);
+      } else {
+        string = OBJECT_MAPPER.writeValueAsString(object);
       }
-
-      StringBuilder b = new StringBuilder();
-      b.append('[');
-      for (int i = 0; ; i++) {
-        b.append(valueOf(Array.get(object, i), format));
-        if (i == iMax) {
-          return b.append(']').toString();
-        }
-        b.append(", ");
-      }
-    } else if (Enumeration.class.isAssignableFrom(clazz)) {
-      Enumeration<?> es = (Enumeration<?>) object;
-      if (!es.hasMoreElements()) {
-        return "[]";
-      }
-      StringBuilder b = new StringBuilder();
-      b.append('[');
-      while (es.hasMoreElements()) {
-        Object e = es.nextElement();
-        b.append(valueOf(e, format));
-        if (!es.hasMoreElements()) {
-          return b.append(']').toString();
-        }
-        b.append(", ");
-      }
-    } else {
-      try {
-        if (format) {
-          objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-        }
-        String string = null;
-        if (string == null) {
-          string = objectMapper.writeValueAsString(object);
-        }
-        if (format) {
-          objectMapper.disable(SerializationFeature.INDENT_OUTPUT);
-        }
-        return string;
-      } catch (Exception e) {
-        log.error(e.getMessage(), e);
-      }
+      return string;
+    } catch (Exception e) {
+      log.error(e.getMessage(), e);
     }
     return String.valueOf(object);
   }
@@ -294,7 +253,7 @@ public class StringUtil {
     if (match || preserveAllTokens && lastMatch) {
       list.add(str.substring(start, i));
     }
-    return list.toArray(new String[list.size()]);
+    return list.toArray(new String[0]);
   }
 
   /**
