@@ -31,6 +31,7 @@ public class StringUtil {
   static {
     OBJECT_MAPPER.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
     INDENT_OUTPUT_OBJECT_MAPPER.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
+    INDENT_OUTPUT_OBJECT_MAPPER.enable(SerializationFeature.INDENT_OUTPUT);
   }
 
   /**
