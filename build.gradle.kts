@@ -1,7 +1,7 @@
 plugins {
     java
     idea
-    id("cn.bestwu.publish") version "0.0.18"
+    id("cn.bestwu.publish") version "0.0.19"
 }
 
 group = "cn.bestwu"
@@ -13,9 +13,9 @@ repositories {
 
 dependencies {
     compile("org.slf4j:slf4j-api:1.7.25")
-    compile("com.fasterxml.jackson.core:jackson-databind:2.9.4")
-    compileOnly("org.apache.lucene:lucene-analyzers-common:7.2.1")
-    compileOnly("org.springframework.boot:spring-boot-starter-web:2.0.0.RELEASE")
+    compile("com.fasterxml.jackson.core:jackson-databind:2.9.5")
+    compileOnly("org.apache.lucene:lucene-analyzers-common:7.3.0")
+    compileOnly("org.springframework.boot:spring-boot-starter-web:2.0.1.RELEASE")
     testCompile("junit:junit:4.12")
 }
 
