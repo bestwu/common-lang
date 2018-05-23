@@ -3,6 +3,11 @@ package cn.bestwu.lang.util;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.util.StringUtils;
 
@@ -12,6 +17,35 @@ import org.springframework.util.StringUtils;
  * @author Peter Wu
  */
 public class IPAddressUtil {
+
+  /**
+   * 获取本机IP
+   * @return ip
+   */
+  public static String getInet4Address() {
+    try {
+      Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+      while (interfaces.hasMoreElements()) {
+        NetworkInterface iface = interfaces.nextElement();
+        // filters out 127.0.0.1 and inactive interfaces
+        if (iface.isLoopback() || !iface.isUp()) {
+          continue;
+        }
+
+        Enumeration<InetAddress> addresses = iface.getInetAddresses();
+        while (addresses.hasMoreElements()) {
+          InetAddress addr = addresses.nextElement();
+          if (addr instanceof Inet4Address) {
+            return addr.getHostAddress();
+          }
+        }
+      }
+    } catch (SocketException e) {
+      throw new RuntimeException(e);
+    }
+
+    return "127.0.0.1";
+  }
 
   /**
    * 获取客户端IP
