@@ -1,1 +1,2 @@
 rootProject.name = 'common-lang'
+enableFeaturePreview('STABLE_PUBLISHING')
