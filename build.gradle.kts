@@ -1,11 +1,11 @@
 plugins {
     java
     idea
-    id("cn.bestwu.publish") version "0.0.22"
+    id("cn.bestwu.publish") version "0.0.24"
 }
 
 group = "cn.bestwu"
-version = "1.1.3"
+version = "1.1.4"
 
 repositories {
     jcenter()
