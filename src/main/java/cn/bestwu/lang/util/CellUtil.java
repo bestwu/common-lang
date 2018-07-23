@@ -31,7 +31,7 @@ public class CellUtil {
    * 4G号段 176、185[1]
    * 新 166 146
    */
-  private static final String CHINA_UNICOM_CELL_REGEX = "^(146\\d|166\\d|130\\d|131\\d|132\\d|155\\d|156\\d|176\\d|185\\d|186\\d|1709)\\d{7}$";
+  private static final String CHINA_UNICOM_CELL_REGEX = "^(146\\d|166\\d|130\\d|131\\d|132\\d|155\\d|156\\d|175\\d|176\\d|185\\d|186\\d|1709)\\d{7}$";
   /**
    * 中国电信号段
    * 2G/3G号段（CDMA2000网络）133、153、180、181、189
