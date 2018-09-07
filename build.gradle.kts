@@ -2,7 +2,7 @@ plugins {
     java
     idea
     kotlin("jvm") version "1.2.60"
-    id("cn.bestwu.publish") version "0.0.24"
+    id("cn.bestwu.publish") version "0.0.30"
 }
 
 group = "cn.bestwu"
