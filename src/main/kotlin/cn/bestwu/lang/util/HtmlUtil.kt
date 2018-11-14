@@ -35,11 +35,11 @@ object HtmlUtil {
      * @return 纯文本内容
      */
     @JvmStatic
-    fun subParseHtmlRemoveBlank(inputString: String?, length: Int): String? {
+    fun subParseHtmlWithoutBlank(inputString: String?, length: Int): String? {
         if (inputString == null) {
             return null
         }
-        val subHtml = parseHtmlRemoveBlank(inputString)
+        val subHtml = parseHtmlWithoutBlank(inputString)
         return StringUtil.subString(subHtml, length)// 返回文本字符串
     }
 
@@ -55,7 +55,7 @@ object HtmlUtil {
         if (inputString == null) {
             return null
         }
-        val subHtml = parseHtmlRemoveBlank(inputString)
+        val subHtml = parseHtmlWithoutBlank(inputString)
         return StringUtil.subStringWithEllipsis(subHtml, length)// 返回文本字符串
     }
 
@@ -83,7 +83,7 @@ object HtmlUtil {
      * @return 去除空白内容的纯文本内容
      */
     @JvmStatic
-    fun parseHtmlRemoveBlank(inputString: String?): String? {
+    fun parseHtmlWithoutBlank(inputString: String?): String? {
         if (inputString == null) {
             return null
         }
