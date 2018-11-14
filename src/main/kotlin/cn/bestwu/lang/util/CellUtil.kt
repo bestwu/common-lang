@@ -52,6 +52,7 @@ object CellUtil {
      * @param cell 手机号码
      * @return 是否为中国移动号码
      */
+    @JvmStatic
     fun isChinaMobile(cell: String?): Boolean {
         return cell?.matches(CHINA_MOBILE_CELL_REGEX.toRegex()) ?: false
     }
@@ -62,6 +63,7 @@ object CellUtil {
      * @param cell 手机号码
      * @return 是否为中国联通号码
      */
+    @JvmStatic
     fun isChinaUnicom(cell: String?): Boolean {
         return cell?.matches(CHINA_UNICOM_CELL_REGEX.toRegex()) ?: false
     }
@@ -72,6 +74,7 @@ object CellUtil {
      * @param cell 手机号码
      * @return 是否为中国电信号码
      */
+    @JvmStatic
     fun isChinaTelecom(cell: String?): Boolean {
         return cell?.matches(CHINA_TELECOM_CELL_REGEX.toRegex()) ?: false
     }
@@ -82,6 +85,7 @@ object CellUtil {
      * @param cell 手机号码
      * @return 是否为中国虚拟运营商号码
      */
+    @JvmStatic
     fun isChinaVNO(cell: String?): Boolean {
         return cell?.matches(CHINA_VNO_CELL_REGEX.toRegex()) ?: false
     }
@@ -92,6 +96,7 @@ object CellUtil {
      * @param cell 手机号码
      * @return 是否为中国内地手机号
      */
+    @JvmStatic
     fun isChinaCell(cell: String?): Boolean {
         return if (cell == null) {
             false

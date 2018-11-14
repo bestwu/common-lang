@@ -19,6 +19,7 @@ object AESUtil {
      * @return 加密后的字符串
      * @throws Exception Exception
      */
+    @JvmStatic
     @Throws(Exception::class)
     fun encrypt(content: String, encryptKey: String): String {
         val kgen = KeyGenerator.getInstance("AES")
@@ -40,6 +41,7 @@ object AESUtil {
      * @return 解密后的字符串
      * @throws Exception Exception
      */
+    @JvmStatic
     @Throws(Exception::class)
     fun decrypt(encryptedStr: String, decryptKey: String): String {
         val kgen = KeyGenerator.getInstance("AES")
@@ -60,6 +62,7 @@ object AESUtil {
      * @param hexStr 16进制
      * @return 二进制
      */
+    @JvmStatic
     fun parseHexStr2Byte(hexStr: String): ByteArray? {
         if (hexStr.isEmpty()) {
             return null
@@ -79,6 +82,7 @@ object AESUtil {
      * @param buf 二进制
      * @return 16进制
      */
+    @JvmStatic
     fun parseByte2HexStr(buf: ByteArray): String {
         val sb = StringBuilder()
         for (aBuf in buf) {

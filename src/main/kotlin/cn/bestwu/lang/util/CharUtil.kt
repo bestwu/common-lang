@@ -15,6 +15,7 @@ object CharUtil {
      * @param str 字符串
      * @return ASCII码
      */
+    @JvmStatic
     fun getCnASCII(str: String): String {
         val sb = StringBuilder()
         val strByte = str.toByteArray()
@@ -32,6 +33,7 @@ object CharUtil {
      * @return 是否为汉字
      */
 
+    @JvmStatic
     fun isCNChar(c: Char): Boolean {
         return Character.toString(c).matches("[\\u4E00-\\u9FA5]+".toRegex())
     }
@@ -42,6 +44,7 @@ object CharUtil {
      * @param capital capital
      * @return 是否为大写字母
      */
+    @JvmStatic
     fun isBigCapital(capital: String): Boolean {
         return capital.matches("[\\u0041-\\u005A]+".toRegex())
     }
@@ -52,6 +55,7 @@ object CharUtil {
      * @param str 字符
      * @return 是否为汉字字符串
      */
+    @JvmStatic
     fun hasCNStr(str: String): Boolean {
         for (c in str.toCharArray()) {
             if (isCNChar(c)) {// 如果有一个为汉字

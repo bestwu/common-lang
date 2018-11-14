@@ -17,6 +17,7 @@ object RandomUtil {
      * @param num 字符串长度
      * @return 随机数字字符串
      */
+    @JvmStatic
     fun nextIntString(num: Int): String {
         return nextString(num, "0123456789")
     }
@@ -28,6 +29,7 @@ object RandomUtil {
      * @param chars 基本字符
      * @return 随机字符串
      */
+    @JvmStatic
     fun nextString(count: Int, chars: String?): String {
         return if (chars == null) {
             next(count, 0, 0, false, false, null, RANDOM)
@@ -41,6 +43,7 @@ object RandomUtil {
      * @param chars 基本字符
      * @return 随机字符串
      */
+    @JvmStatic
     fun nextString(count: Int, chars: CharArray?): String {
         return if (chars == null) {
             next(count, 0, 0, false, false, null, RANDOM)
@@ -59,6 +62,7 @@ object RandomUtil {
      * @param random 随机
      * @return 随机字符串
      */
+    @JvmStatic
     fun next(count: Int, start: Int, end: Int, letters: Boolean,
              numbers: Boolean, chars: CharArray?, random: Random): String {
         var c = count
@@ -132,6 +136,7 @@ object RandomUtil {
      * @param num 长度
      * @return 随机数字
      */
+    @JvmStatic
     fun nextInt(num: Int): Int {
         return Integer.parseInt(nextIntString(num))
     }
@@ -142,6 +147,7 @@ object RandomUtil {
      * @param num 长度
      * @return 随机字符串
      */
+    @JvmStatic
     fun nextString(num: Int): String {
         return nextString(num, "abcdefghigklmnopqrstuvwxyz")
     }
@@ -152,6 +158,7 @@ object RandomUtil {
      * @param num 长度
      * @return 随机字符串
      */
+    @JvmStatic
     fun nextString2(num: Int): String {
         return nextString(num, "abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ0123456789")
     }

@@ -32,6 +32,7 @@ object Sha1DigestUtil {
      * @param data Data to digest
      * @return SHA digest
      */
+    @JvmStatic
     fun sha(data: ByteArray): ByteArray {
         return sha1Digest.digest(data)
     }
@@ -42,6 +43,7 @@ object Sha1DigestUtil {
      * @param data Data to digest
      * @return SHA digest
      */
+    @JvmStatic
     fun sha(data: String): ByteArray {
         return sha(data.toByteArray())
     }
@@ -52,6 +54,7 @@ object Sha1DigestUtil {
      * @param data Data to digest
      * @return SHA digest as a hex string
      */
+    @JvmStatic
     fun shaHex(data: ByteArray): String {
         return String(Hex.encode(sha(data)))
     }
@@ -62,6 +65,7 @@ object Sha1DigestUtil {
      * @param data Data to digest
      * @return SHA digest as a hex string
      */
+    @JvmStatic
     fun shaHex(data: String): String {
         return String(Hex.encode(sha(data)))
     }

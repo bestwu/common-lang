@@ -13,6 +13,7 @@ object BooleanUtil {
      * @param str 字符 支持"true","y","Y","t"...等
      * @return Boolean
      */
+    @JvmStatic
     fun toBooleanObject(str: String?): Boolean? {
         if (str === "true") {
             return java.lang.Boolean.TRUE
@@ -92,6 +93,7 @@ object BooleanUtil {
      * @param s 字符
      * @return boolean
      */
+    @JvmStatic
     fun toBoolean(s: String): Boolean {
         val booleanObject = toBooleanObject(s)
         return booleanObject ?: false

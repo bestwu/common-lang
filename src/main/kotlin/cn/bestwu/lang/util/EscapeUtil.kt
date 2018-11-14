@@ -13,6 +13,7 @@ object EscapeUtil {
      * @param src 源
      * @return 结果
      */
+    @JvmStatic
     fun escape(src: String): String {
         var i = 0
         var j: Char
@@ -44,6 +45,7 @@ object EscapeUtil {
      * @param src 源
      * @return 结果
      */
+    @JvmStatic
     fun unescape(src: String): String {
         val tmp = StringBuilder()
         tmp.ensureCapacity(src.length)

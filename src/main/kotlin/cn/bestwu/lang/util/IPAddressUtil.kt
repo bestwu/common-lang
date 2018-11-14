@@ -20,6 +20,7 @@ object IPAddressUtil {
      * 获取本机IP
      * @return ip
      */
+    @JvmStatic
     // filters out 127.0.0.1 and inactive interfaces
     val inet4Address: String
         get() {
@@ -52,6 +53,7 @@ object IPAddressUtil {
      * @param request http请求
      * @return ip
      */
+    @JvmStatic
     fun getClientIp(request: HttpServletRequest): String {
 
         var ip: String? = request.getHeader("X-Forwarded-For")
@@ -82,6 +84,7 @@ object IPAddressUtil {
      * @param ipAddress ip
      * @return 是否为外网
      */
+    @JvmStatic
     fun isExtranet(ipAddress: String): Boolean {
         if (!StringUtils.hasText(ipAddress)) {
             throw IllegalArgumentException("ipAddress 不能为空")
@@ -97,6 +100,7 @@ object IPAddressUtil {
      * @param ipAddress ip
      * @return MAC地址
      */
+    @JvmStatic
     fun getMACAddress(ipAddress: String): String {
         var str: String?
         var strMAC = ""

@@ -21,6 +21,7 @@ object CaptchaUtil {
     /**
      * 使用到Algerian字体，系统里没有的话需要安装字体，字体只显示大写，去掉了1,0,i,o几个容易混淆的字符
      */
+    @JvmStatic
     val CAPTCHA_CODES = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ"
     private val random = Random()
 
@@ -56,6 +57,7 @@ object CaptchaUtil {
      * @param size 验证码长度
      * @return 验证码
      */
+    @JvmStatic
     fun generateCaptcha(size: Int): String {
         return generateCaptcha(size, CAPTCHA_CODES)
     }
@@ -91,6 +93,7 @@ object CaptchaUtil {
      * @throws IOException IOException
      */
     @Throws(IOException::class)
+    @JvmStatic
     fun generateImage(w: Int, h: Int, os: OutputStream, code: String) {
         val verifySize = code.length
         val image = BufferedImage(w, h, BufferedImage.TYPE_INT_RGB)

@@ -15,10 +15,12 @@ object FileUtil {
     private val log = LoggerFactory.getLogger(FileUtil::class.java)
 
     //-----------------------------------------------------------------------
+    @JvmStatic
     fun toCharset(charset: Charset?): Charset {
         return charset ?: Charset.defaultCharset()
     }
 
+    @JvmStatic
     fun toCharset(charset: String?): Charset {
         return if (charset == null) Charset.defaultCharset() else Charset.forName(charset)
     }
@@ -31,6 +33,7 @@ object FileUtil {
      * @throws IOException IOException
      */
     @Throws(IOException::class)
+    @JvmStatic
     fun openInputStream(file: File): FileInputStream {
         if (file.exists()) {
             if (file.isDirectory) {
@@ -48,6 +51,7 @@ object FileUtil {
     //-----------------------------------------------------------------------
 
     @Throws(IOException::class)
+    @JvmStatic
     fun openOutputStream(file: File, append: Boolean): FileOutputStream {
         if (file.exists()) {
             if (file.isDirectory) {
@@ -69,6 +73,7 @@ object FileUtil {
 
     //-----------------------------------------------------------------------
 
+    @JvmStatic
     fun listFiles(directory: File, filter: FileFilter, recursive: Boolean): Collection<File> {
         val files = java.util.LinkedList<File>()
         innerListFiles(files, directory, filter, false, recursive)
@@ -98,6 +103,7 @@ object FileUtil {
     //-----------------------------------------------------------------------
 
     @Throws(IOException::class)
+    @JvmStatic
     fun readLines(input: InputStream, encoding: Charset): List<String> {
         val reader = BufferedReader(InputStreamReader(input, toCharset(encoding)))
         val list = ArrayList<String>()
@@ -111,6 +117,7 @@ object FileUtil {
 
     @Throws(IOException::class)
     @JvmOverloads
+    @JvmStatic
     fun readLines(file: File, encoding: Charset = Charset.defaultCharset()): List<String> {
         var `in`: InputStream? = null
         try {
@@ -127,26 +134,31 @@ object FileUtil {
     }
 
     @Throws(IOException::class)
+    @JvmStatic
     fun readLines(file: File, encoding: String): List<String> {
         return readLines(file, toCharset(encoding))
     }
 
     @Throws(IOException::class)
+    @JvmStatic
     fun writeLines(file: File, encoding: String, lines: Collection<*>, append: Boolean) {
         writeLines(file, encoding, lines, null, append)
     }
 
     @Throws(IOException::class)
+    @JvmStatic
     fun writeLines(file: File, lines: Collection<*>) {
         writeLines(file, null, lines, null, false)
     }
 
     @Throws(IOException::class)
+    @JvmStatic
     fun writeLines(file: File, lines: Collection<*>, append: Boolean) {
         writeLines(file, null, lines, null, append)
     }
 
     @Throws(IOException::class)
+    @JvmStatic
     fun writeLines(lines: Collection<*>?, lineEnding: String?, output: OutputStream,
                    encoding: Charset) {
         var ending = lineEnding
@@ -167,6 +179,7 @@ object FileUtil {
 
     @Throws(IOException::class)
     @JvmOverloads
+    @JvmStatic
     fun writeLines(file: File, encoding: String?, lines: Collection<*>, lineEnding: String? = null,
                    append: Boolean = false) {
         var out: FileOutputStream? = null
@@ -187,11 +200,13 @@ object FileUtil {
     }
 
     @Throws(IOException::class)
+    @JvmStatic
     fun writeLines(file: File, lines: Collection<*>, lineEnding: String) {
         writeLines(file, null, lines, lineEnding, false)
     }
 
     @Throws(IOException::class)
+    @JvmStatic
     fun writeLines(file: File, lines: Collection<*>, lineEnding: String, append: Boolean) {
         writeLines(file, null, lines, lineEnding, append)
     }
@@ -204,6 +219,7 @@ object FileUtil {
      * @param file 文件
      * @return 是否成功
      */
+    @JvmStatic
     fun delete(file: File): Boolean {
         if (!file.exists()) {
             return false

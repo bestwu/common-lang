@@ -18,6 +18,7 @@ object HtmlUtil {
      * @param length 截取长度
      * @return 纯文本内容
      */
+    @JvmStatic
     fun subParseHtml(inputString: String?, length: Int): String? {
         if (inputString == null) {
             return null
@@ -33,6 +34,7 @@ object HtmlUtil {
      * @param length 截取长度
      * @return 纯文本内容
      */
+    @JvmStatic
     fun subParseHtmlRemoveBlank(inputString: String?, length: Int): String? {
         if (inputString == null) {
             return null
@@ -48,6 +50,7 @@ object HtmlUtil {
      * @param length 截取长度
      * @return 纯文本内容
      */
+    @JvmStatic
     fun subParseHtmlWithEllipsis(inputString: String?, length: Int): String? {
         if (inputString == null) {
             return null
@@ -60,6 +63,7 @@ object HtmlUtil {
      * @param inputString 输入HTML内容
      * @return 纯文本内容
      */
+    @JvmStatic
     fun parseHtml(inputString: String?): String? {
         if (inputString == null) {
             return null
@@ -78,6 +82,7 @@ object HtmlUtil {
      * @param inputString 输入HTML内容
      * @return 去除空白内容的纯文本内容
      */
+    @JvmStatic
     fun parseHtmlRemoveBlank(inputString: String?): String? {
         if (inputString == null) {
             return null

@@ -15,7 +15,9 @@ import java.util.zip.InflaterInputStream
  */
 object StringUtil {
 
+    @JvmStatic
     var OBJECT_MAPPER = ObjectMapper()
+    @JvmStatic
     var INDENT_OUTPUT_OBJECT_MAPPER = ObjectMapper()
 
     init {
@@ -28,6 +30,7 @@ object StringUtil {
      * @param str 字符
      * @return 是否有长度
      */
+    @JvmStatic
     fun hasLength(str: CharSequence?): Boolean {
         return !str.isNullOrEmpty()
     }
@@ -36,6 +39,7 @@ object StringUtil {
      * @param str 字符
      * @return 是否有字符
      */
+    @JvmStatic
     fun hasText(str: CharSequence): Boolean {
         return !str.isNullOrBlank()
     }
@@ -44,6 +48,7 @@ object StringUtil {
      * @param s 字符串
      * @return 转换为带下划线的小写字符
      */
+    @JvmStatic
     fun addUnderscores(s: String): String {
         val buf = StringBuilder(s.replace('.', '_'))
         var i = 1
@@ -66,6 +71,7 @@ object StringUtil {
      * @return 字符串
      */
     @JvmOverloads
+    @JvmStatic
     fun valueOf(`object`: Any?, format: Boolean = false): String {
         return if (format) {
             INDENT_OUTPUT_OBJECT_MAPPER.writeValueAsString(`object`)
@@ -81,6 +87,7 @@ object StringUtil {
      * @param length 长度
      * @return 截取后的字符串
      */
+    @JvmStatic
     fun subString(str: String?, length: Int): String? {
         if (str == null) {
             return null
@@ -100,6 +107,7 @@ object StringUtil {
      * @param length 长度
      * @return 截取后的字符串
      */
+    @JvmStatic
     fun subStringWithEllipsis(str: String?, length: Int): String? {
         if (str == null) {
             return null
@@ -119,6 +127,7 @@ object StringUtil {
      * @param sub 子字符串
      * @return 个数
      */
+    @JvmStatic
     fun countSubString(str: String, sub: String): Int {
         return if (str.contains(sub)) {
             splitWorker(str, sub, -1, false)!!.size - 1
@@ -229,6 +238,7 @@ object StringUtil {
      * @param str 待压缩字符
      * @return 压缩后字符
      */
+    @JvmStatic
     fun compress(str: String?): String? {
         if (str == null || str.isEmpty()) {
             return str
@@ -245,6 +255,7 @@ object StringUtil {
 
     }
 
+    @JvmStatic
     fun decompress(str: String?): String? {
         if (str == null || str.isEmpty()) {
             return str
@@ -261,6 +272,7 @@ object StringUtil {
     }
 
     @Throws(IOException::class)
+    @JvmStatic
     fun copyToString(`in`: InputStream, charset: Charset): String {
         val reader = InputStreamReader(`in`, charset)
         return reader.readText()
@@ -272,6 +284,7 @@ object StringUtil {
      * @param jsonStr jsonStr
      * @return String
      */
+    @JvmStatic
     fun formatJson(jsonStr: String?): String {
         if (null == jsonStr || "" == jsonStr) {
             return ""
