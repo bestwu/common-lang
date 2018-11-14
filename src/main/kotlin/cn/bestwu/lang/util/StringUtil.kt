@@ -29,7 +29,7 @@ object StringUtil {
      * @return 是否有长度
      */
     fun hasLength(str: CharSequence?): Boolean {
-        return str != null && str.isNotEmpty()
+        return !str.isNullOrEmpty()
     }
 
     /**
@@ -37,16 +37,7 @@ object StringUtil {
      * @return 是否有字符
      */
     fun hasText(str: CharSequence): Boolean {
-        if (!hasLength(str)) {
-            return false
-        }
-        val strLen = str.length
-        for (i in 0 until strLen) {
-            if (!Character.isWhitespace(str[i])) {
-                return true
-            }
-        }
-        return false
+        return !str.isNullOrBlank()
     }
 
     /**

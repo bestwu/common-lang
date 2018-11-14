@@ -3,10 +3,11 @@ plugins {
     idea
     kotlin("jvm") version "1.2.60"
     id("cn.bestwu.publish") version "0.0.30"
+    id("com.jfrog.artifactory") version "4.7.5"
 }
 
 group = "cn.bestwu"
-version = "1.1.5"
+version = "1.1.5-SNAPSHOT"
 
 repositories {
     jcenter()

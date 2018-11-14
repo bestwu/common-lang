@@ -22,6 +22,21 @@ object HtmlUtil {
         if (inputString == null) {
             return null
         }
+        val subHtml = parseHtml(inputString)
+        return StringUtil.subString(subHtml, length)// 返回文本字符串
+    }
+
+    /**
+     * 截取纯文本内容
+     *
+     * @param inputString 输入HTML内容
+     * @param length 截取长度
+     * @return 纯文本内容
+     */
+    fun subParseHtmlRemoveBlank(inputString: String?, length: Int): String? {
+        if (inputString == null) {
+            return null
+        }
         val subHtml = parseHtmlRemoveBlank(inputString)
         return StringUtil.subString(subHtml, length)// 返回文本字符串
     }
@@ -67,7 +82,7 @@ object HtmlUtil {
         if (inputString == null) {
             return null
         }
-        try {
+        return try {
             // html过滤
             val htmlscript = HTMLStripCharFilter(StringReader(inputString))
             //增加映射过滤  主要过滤掉换行符
@@ -77,9 +92,9 @@ object HtmlUtil {
             builder.add("\n", "")//换行
             builder.add(" ", "")//空白
             val cs = MappingCharFilter(builder.build(), htmlscript)
-            return cs.readText()
+            cs.readText()
         } catch (e: IOException) {
-            return inputString
+            inputString
         }
 
     }
