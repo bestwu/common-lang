@@ -13,8 +13,8 @@ object ArrayUtil {
      * @return 是否包含
      */
     @JvmStatic
-    fun contains(array: Array<Any>, objectToFind: Any): Boolean {
-        return array.contains(objectToFind)
+    fun contains(array: Array<Any>?, objectToFind: Any): Boolean {
+        return array?.contains(objectToFind) == true
     }
 
     /**
@@ -23,8 +23,8 @@ object ArrayUtil {
      * @return 内容所在索引
      */
     @JvmStatic
-    fun indexOf(array: Array<Any>, objectToFind: Any): Int {
-        return array.indexOf(objectToFind)
+    fun indexOf(array: Array<Any>?, objectToFind: Any): Int {
+        return array?.indexOf(objectToFind) ?: -1
     }
 
     /**
@@ -36,7 +36,7 @@ object ArrayUtil {
     </T> */
     @SafeVarargs
     @JvmStatic
-    fun <T> toArray(vararg items: T): Array<out T> {
+    fun <T> toArray(vararg items: T?): Array<out T?> {
         return items
     }
 
@@ -45,7 +45,7 @@ object ArrayUtil {
      * @return 是否不为空
      */
     @JvmStatic
-    fun isNotEmpty(array: Array<Any>): Boolean {
+    fun isNotEmpty(array: Array<Any>?): Boolean {
         return !isEmpty(array)
     }
 

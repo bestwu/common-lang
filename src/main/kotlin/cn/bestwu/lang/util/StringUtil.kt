@@ -40,7 +40,7 @@ object StringUtil {
      * @return 是否有字符
      */
     @JvmStatic
-    fun hasText(str: CharSequence): Boolean {
+    fun hasText(str: CharSequence?): Boolean {
         return !str.isNullOrBlank()
     }
 
