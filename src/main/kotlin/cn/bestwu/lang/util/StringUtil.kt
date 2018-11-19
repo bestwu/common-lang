@@ -73,6 +73,9 @@ object StringUtil {
     @JvmOverloads
     @JvmStatic
     fun valueOf(`object`: Any?, format: Boolean = false): String {
+        if (`object` is CharSequence) {
+            return `object`.toString()
+        }
         return if (format) {
             INDENT_OUTPUT_OBJECT_MAPPER.writeValueAsString(`object`)
         } else {
