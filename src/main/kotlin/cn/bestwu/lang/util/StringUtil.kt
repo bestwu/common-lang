@@ -116,10 +116,10 @@ object StringUtil {
             return null
         }
         val l = str.length
-        return if (l > length) {
-            str.substring(0, length - 3) + "..."
+        return if (length in 4..(l - 1)) {
+            "${str.substring(0, length - 3)}..."
         } else {
-            str
+            subString(str, length)
         }
     }
 
