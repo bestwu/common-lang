@@ -1,13 +1,13 @@
 plugins {
     java
     idea
-    kotlin("jvm") version "1.2.60"
+    kotlin("jvm") version "1.3.10"
     id("cn.bestwu.publish") version "0.0.30"
     id("com.jfrog.artifactory") version "4.7.5"
 }
 
 group = "cn.bestwu"
-version = "1.1.5-SNAPSHOT"
+version = "1.1.5"
 
 repositories {
     jcenter()
@@ -15,9 +15,9 @@ repositories {
 
 dependencies {
     compile(kotlin("stdlib"))
-    compile("com.fasterxml.jackson.core:jackson-databind:2.9.6")
-    compileOnly("org.apache.lucene:lucene-analyzers-common:7.4.0")
-    compileOnly("org.springframework.boot:spring-boot-starter-web:2.0.4.RELEASE")
+    compile("com.fasterxml.jackson.core:jackson-databind:2.9.7")
+    compileOnly("org.apache.lucene:lucene-analyzers-common:7.5.0")
+    compileOnly("org.springframework.boot:spring-boot-starter-web:2.1.1.RELEASE")
     testCompile("junit:junit:4.12")
 }
 
