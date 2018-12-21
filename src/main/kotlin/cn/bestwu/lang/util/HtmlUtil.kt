@@ -1,10 +1,9 @@
 package cn.bestwu.lang.util
 
-import org.apache.lucene.analysis.charfilter.HTMLStripCharFilter
-import org.apache.lucene.analysis.charfilter.MappingCharFilter
-import org.apache.lucene.analysis.charfilter.NormalizeCharMap
+import org.jsoup.Jsoup
+import org.jsoup.parser.Parser
+import org.jsoup.safety.Whitelist
 import java.io.IOException
-import java.io.StringReader
 
 /**
  * HTML 工具类
@@ -70,8 +69,19 @@ object HtmlUtil {
         }
         return try {
             // html过滤
-            val htmlscript = HTMLStripCharFilter(StringReader(inputString))
-            htmlscript.readText()
+            var content = Jsoup.clean(inputString, Whitelist().addTags("br", "p"))
+            val elements = Jsoup.parse(content).body()
+            elements.select("br").append("\\n")
+            elements.select("p").append("\\n")
+            val html = elements.html()
+            val clean = Jsoup.clean(html, Whitelist.none())
+            content = Parser.unescapeEntities(clean, false)
+            val split = content.split("\\\\n".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+            val contentBuilder = StringBuilder("")
+            split.filterNot { org.jsoup.helper.StringUtil.isBlank(it.trim()) }
+                    .forEach { contentBuilder.append("\t").append(it.trim()).append("\n") }
+
+            contentBuilder.toString()
         } catch (e: IOException) {
             inputString
         }
@@ -84,23 +94,6 @@ object HtmlUtil {
      */
     @JvmStatic
     fun parseHtmlWithoutBlank(inputString: String?): String? {
-        if (inputString == null) {
-            return null
-        }
-        return try {
-            // html过滤
-            val htmlscript = HTMLStripCharFilter(StringReader(inputString))
-            //增加映射过滤  主要过滤掉换行符
-            val builder = NormalizeCharMap.Builder()
-            builder.add("\r", "")//回车
-            builder.add("\t", "")//横向跳格
-            builder.add("\n", "")//换行
-            builder.add(" ", "")//空白
-            val cs = MappingCharFilter(builder.build(), htmlscript)
-            cs.readText()
-        } catch (e: IOException) {
-            inputString
-        }
-
+        return parseHtml(inputString)?.replace(Regex("[\r\t\n ]"), "")
     }
 }

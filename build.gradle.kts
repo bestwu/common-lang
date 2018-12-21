@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "cn.bestwu"
-version = "1.1.5"
+version = "1.1.6-SNAPSHOT"
 
 repositories {
     jcenter()
@@ -16,8 +16,10 @@ repositories {
 dependencies {
     compile(kotlin("stdlib"))
     compile("com.fasterxml.jackson.core:jackson-databind:2.9.7")
-    compileOnly("org.apache.lucene:lucene-analyzers-common:7.5.0")
+    compileOnly("org.jsoup:jsoup:1.11.3")
     compileOnly("org.springframework.boot:spring-boot-starter-web:2.1.1.RELEASE")
+
+    testCompile("org.jsoup:jsoup:1.11.3")
     testCompile("junit:junit:4.12")
 }
 
